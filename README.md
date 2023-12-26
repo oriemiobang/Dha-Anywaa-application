@@ -1,8 +1,8 @@
-# dha_anywaaa
+# Dha Anywaa
 
 This is an app that help people who are interested in learning reading in anywaa language
 
-## Getting Started
+## The anywaa language app
 
 This is a Dha Anywaa app designed by a university student to assist individuals in learning to read the Anywaa language.
 It is user-friendly, featuring both pictures and audio elements to enhance the learning experience. 
