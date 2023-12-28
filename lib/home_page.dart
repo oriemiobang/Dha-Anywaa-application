@@ -6,6 +6,7 @@ import 'package:dha_anywaaa/pages/page2.dart';
 import 'package:dha_anywaaa/pages/page3.dart';
 import 'package:dha_anywaaa/pages/page4.dart';
 import 'package:dha_anywaaa/vowelLetter.dart';
+import 'package:dha_anywaaa/widgets/body.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -95,6 +96,19 @@ class _HomePageState extends State<HomePage> {
                 },
                 title: const Text(
                   'Göörë moo cïp dwøl',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 4, 28, 49),
+                  ),
+                ),
+              ),
+              ListTile(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const Body()));
+                },
+                title: const Text(
+                  'Thak deer dhaahno',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Color.fromARGB(255, 4, 28, 49),
