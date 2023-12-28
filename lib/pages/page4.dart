@@ -261,7 +261,7 @@ class _Page4State extends State<Page4> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    '(${questionsList[index].id} / ${questionsList.length}) Jier løk pïëc mana näk kare.',
+                    '($finalResult / ${questionsList.length}) Jier løk pïëc mana näk kare.',
                     style: TextStyle(
                         color: Color.fromARGB(255, 3, 44, 77),
                         fontWeight: FontWeight.bold,
@@ -331,6 +331,9 @@ class _Page4State extends State<Page4> {
                                   selectedIndex = listViewIndex;
                                   if (listViewIndex ==
                                       questionsList[index].answer_index) {
+                                    if (index >= nextPageIndex) {
+                                      trial = 0;
+                                    }
                                     trial++;
 
                                     rightAnswerColor = Colors.green;

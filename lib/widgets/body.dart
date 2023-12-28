@@ -8,7 +8,7 @@ class Body extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          ' ',
+          'Jap dëër dhaanhø',
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21),
         ),
         centerTitle: true,
@@ -16,7 +16,16 @@ class Body extends StatelessWidget {
         backgroundColor: const Color.fromARGB(255, 4, 28, 49),
       ),
       body: SingleChildScrollView(
-        child: Container(child: Image.asset('assets/word_images/body.jpg')),
+        child: Column(children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: Image.asset('assets/word_images/body_parts1.jpg'),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Image.asset('assets/word_images/body_part2.jpg'),
+          ),
+        ]),
       ),
     );
   }

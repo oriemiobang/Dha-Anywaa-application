@@ -108,7 +108,7 @@ class _HomePageState extends State<HomePage> {
                       MaterialPageRoute(builder: (context) => const Body()));
                 },
                 title: const Text(
-                  'Thak deer dhaahno',
+                  'Jap dëël',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Color.fromARGB(255, 4, 28, 49),
