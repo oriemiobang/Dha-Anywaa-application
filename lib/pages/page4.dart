@@ -11,6 +11,7 @@ class Page4 extends StatefulWidget {
 class _Page4State extends State<Page4> {
   int pageCounter = 0;
   int selectedIndex = -1;
+  int previousPage = 0;
   int PageSelectedIndex = -1;
   Color rightAnswerColor = Color.fromARGB(255, 245, 242, 242);
   Color wrongAnswerColor = Color.fromARGB(255, 245, 242, 242);
@@ -332,8 +333,12 @@ class _Page4State extends State<Page4> {
                                   if (listViewIndex ==
                                       questionsList[index].answer_index) {
                                     if (index >= nextPageIndex) {
-                                      trial = 0;
+                                      previousPage = nextPageIndex - 1;
                                     }
+                                    // if (nextPageIndex > previousPage) {
+                                    //   trial = 0;
+                                    // }
+
                                     trial++;
 
                                     rightAnswerColor = Colors.green;

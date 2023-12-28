@@ -1,10 +1,19 @@
+import 'package:dha_anywaaa/body_part.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatelessWidget {
-  const Body({super.key});
+  const Body({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    List bodyPartInfo = [
+      BodyPart(number: 1, bodyPartName: "bodyPartName", soundUrl: "soundUrl"),
+      BodyPart(number: 1, bodyPartName: "bodyPartName", soundUrl: "soundUrl"),
+      BodyPart(number: 1, bodyPartName: "bodyPartName", soundUrl: "soundUrl"),
+      BodyPart(number: 1, bodyPartName: "bodyPartName", soundUrl: "soundUrl"),
+      BodyPart(number: 1, bodyPartName: "bodyPartName", soundUrl: "soundUrl"),
+    ];
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -15,18 +24,37 @@ class Body extends StatelessWidget {
         foregroundColor: Colors.white,
         backgroundColor: const Color.fromARGB(255, 4, 28, 49),
       ),
-      body: SingleChildScrollView(
-        child: Column(children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(5.0),
-            child: Image.asset('assets/word_images/body_parts1.jpg'),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Image.asset('assets/word_images/body_part2.jpg'),
-          ),
-        ]),
+      body: ListView(
+        children: [
+          setImage('assets/word_images/body_parts1.jpg'),
+          setImage('assets/word_images/body_part2.jpg'),
+          bodyPartSound(bodyPartInfo),
+        ],
       ),
+    );
+  }
+
+  Widget setImage(String imageUrl) {
+    return Padding(
+      padding: const EdgeInsets.all(5.0),
+      child: Image.asset(imageUrl),
+    );
+  }
+
+  Widget bodyPartSound(bodyPartInfo) {
+    return ListView.builder(
+      shrinkWrap:
+          true, // Ensure the ListView doesn't try to take infinite height
+      physics:
+          NeverScrollableScrollPhysics(), // Disable scrolling in the inner ListView
+      itemCount: 5,
+      itemBuilder: (BuildContext context, int index) {
+        return Card(
+          child: ListTile(
+            title: Text(bodyPartInfo[index].bodyPartName),
+          ),
+        );
+      },
     );
   }
 }
