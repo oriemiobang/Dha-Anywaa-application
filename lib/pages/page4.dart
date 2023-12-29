@@ -9,15 +9,13 @@ class Page4 extends StatefulWidget {
 }
 
 class _Page4State extends State<Page4> {
-  int pageCounter = 0;
   int selectedIndex = -1;
-  int previousPage = 0;
+
   int PageSelectedIndex = -1;
   Color rightAnswerColor = Color.fromARGB(255, 245, 242, 242);
-  Color wrongAnswerColor = Color.fromARGB(255, 245, 242, 242);
+
   int nextPageIndex = 0;
   int finalResult = 0;
-  int trial = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -304,13 +302,7 @@ class _Page4State extends State<Page4> {
                     )
                   ],
                 ),
-                // SizedBox(
-                //   height: 15,
-                // ),
                 Divider(),
-                // SizedBox(
-                //   height: 15,
-                // ),
                 Expanded(
                   child: ListView.builder(
                       itemCount: 4,
@@ -321,57 +313,50 @@ class _Page4State extends State<Page4> {
                             decoration: BoxDecoration(
                                 color: (selectedIndex == listViewIndex) &&
                                         (PageSelectedIndex == index)
-                                    ? rightAnswerColor
-                                    : null,
+                                    ? (listViewIndex ==
+                                            questionsList[index].answer_index
+                                        ? Colors.green
+                                        : Colors.red)
+                                    : (listViewIndex ==
+                                                questionsList[index]
+                                                    .answer_index &&
+                                            PageSelectedIndex == index
+                                        ? Colors.green.withOpacity(0.7)
+                                        : null),
                                 borderRadius: BorderRadius.circular(10)),
-                            child: ListTile(
-                              // tileColor: currentColor,
-                              onTap: () {
-                                setState(() {
-                                  PageSelectedIndex = index;
-                                  selectedIndex = listViewIndex;
-                                  if (listViewIndex ==
-                                      questionsList[index].answer_index) {
-                                    if (index >= nextPageIndex) {
-                                      previousPage = nextPageIndex - 1;
+                            child: AbsorbPointer(
+                              absorbing: PageSelectedIndex == index,
+                              child: ListTile(
+                                onTap: () {
+                                  setState(() {
+                                    PageSelectedIndex = index;
+                                    selectedIndex = listViewIndex;
+                                    if (listViewIndex ==
+                                        questionsList[index].answer_index) {
+                                      // rightAnswerColor = Colors.green;
+
+                                      if (index >= nextPageIndex) {
+                                        nextPageIndex++;
+                                        finalResult = nextPageIndex;
+                                      }
+                                    } else {
+                                      // rightAnswerColor = Colors.red;
                                     }
-                                    // if (nextPageIndex > previousPage) {
-                                    //   trial = 0;
-                                    // }
-
-                                    trial++;
-
-                                    rightAnswerColor = Colors.green;
-                                    if ((index >= nextPageIndex) &&
-                                        (trial == 1)) {
-                                      trial = 0;
-                                      nextPageIndex++;
-                                      finalResult = nextPageIndex;
-                                    } else if (index >= nextPageIndex) {
-                                      trial = 0;
-                                    }
-                                  } else {
-                                    trial++;
-                                    // if (index >= nextPageIndex) {
-                                    //   trial = 0;
-                                    // }
-
-                                    rightAnswerColor = Colors.red;
-                                  }
-                                  print(trial);
-                                });
-                              },
-                              leading: Padding(
-                                padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                                child: Icon(Icons.circle_outlined),
-                              ),
-                              title: Padding(
-                                padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                                child: Text(
-                                  questionsList[index].options[listViewIndex],
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    // fontSize: 20
+                                  });
+                                },
+                                leading: Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                                  child: Icon(Icons.circle_outlined),
+                                ),
+                                title: Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                                  child: Text(
+                                    questionsList[index].options[listViewIndex],
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ),
                               ),
