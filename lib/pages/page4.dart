@@ -16,6 +16,7 @@ class _Page4State extends State<Page4> {
 
   int nextPageIndex = 0;
   int finalResult = 0;
+  List answeredQuestions = [];
 
   @override
   Widget build(BuildContext context) {
@@ -305,6 +306,7 @@ class _Page4State extends State<Page4> {
                 Divider(),
                 Expanded(
                   child: ListView.builder(
+                      shrinkWrap: false,
                       itemCount: 4,
                       itemBuilder: (context, int listViewIndex) {
                         return Card(
@@ -329,18 +331,21 @@ class _Page4State extends State<Page4> {
                               child: ListTile(
                                 onTap: () {
                                   setState(() {
+                                    answeredQuestions
+                                        .add(questionsList[index].id);
+                                    int count = answeredQuestions
+                                        .where((number) =>
+                                            number == questionsList[index].id)
+                                        .length;
+                                    // print(count);
                                     PageSelectedIndex = index;
                                     selectedIndex = listViewIndex;
+
                                     if (listViewIndex ==
                                         questionsList[index].answer_index) {
-                                      // rightAnswerColor = Colors.green;
-
-                                      if (index >= nextPageIndex) {
-                                        nextPageIndex++;
-                                        finalResult = nextPageIndex;
+                                      if (count == 1) {
+                                        finalResult += 1;
                                       }
-                                    } else {
-                                      // rightAnswerColor = Colors.red;
                                     }
                                   });
                                 },
