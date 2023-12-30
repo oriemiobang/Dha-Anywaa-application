@@ -94,6 +94,7 @@ class _HomePageState extends State<HomePage> {
                       MaterialPageRoute(
                           builder: (context) => const VowelLetter()));
                 },
+                leading: Icon(Icons.abc),
                 title: const Text(
                   'Göörë moo cïp dwøl',
                   style: TextStyle(
@@ -107,6 +108,7 @@ class _HomePageState extends State<HomePage> {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const Body()));
                 },
+                leading: Icon(Icons.boy_outlined),
                 title: const Text(
                   'Jap dëël',
                   style: TextStyle(

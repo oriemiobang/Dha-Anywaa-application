@@ -306,7 +306,6 @@ class _Page4State extends State<Page4> {
                 Divider(),
                 Expanded(
                   child: ListView.builder(
-                      shrinkWrap: false,
                       itemCount: 4,
                       itemBuilder: (context, int listViewIndex) {
                         return Card(
@@ -342,10 +341,9 @@ class _Page4State extends State<Page4> {
                                     selectedIndex = listViewIndex;
 
                                     if (listViewIndex ==
-                                        questionsList[index].answer_index) {
-                                      if (count == 1) {
-                                        finalResult += 1;
-                                      }
+                                            questionsList[index].answer_index &&
+                                        count == 1) {
+                                      finalResult += 1;
                                     }
                                   });
                                 },
