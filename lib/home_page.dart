@@ -151,7 +151,7 @@ class _HomePageState extends State<HomePage> {
               const Divider(),
               const Padding(
                 padding: EdgeInsets.all(10),
-                child: Text(
+                child: SelectableText(
                   'Designed and developed by\nName: Oriemi Obang Oriemi\n'
                   'Email: oriemiobango@gmail.com',
                   style: TextStyle(color: Color.fromARGB(255, 158, 152, 152)),

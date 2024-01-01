@@ -18,7 +18,7 @@ class Help extends StatelessWidget {
         child: SafeArea(
             child: Padding(
           padding: EdgeInsets.all(10),
-          child: Text(
+          child: SelectableText(
               'When you open the Dha Anywaa app, the first page that should pop up is the one containing Dha Anywaa alphabets. The title is "Göörë," which means alphabets, and it includes both the small and capital letters of Dha Anywaa.'
               'If you find reading the letters challenging, simply click on a letter, and the app will read it to you.\n\n'
               "The second page consists of words and corresponding images. You can read the words, and if you find them challenging, you can refer to the pictures for hints. If you're unsure, clicking on the image will have the app read it to you.\n\n"

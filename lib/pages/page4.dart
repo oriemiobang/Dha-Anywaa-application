@@ -10,11 +10,7 @@ class Page4 extends StatefulWidget {
 
 class _Page4State extends State<Page4> {
   int selectedIndex = -1;
-
   int PageSelectedIndex = -1;
-  Color rightAnswerColor = Color.fromARGB(255, 245, 242, 242);
-
-  int nextPageIndex = 0;
   int finalResult = 0;
   List answeredQuestions = [];
 
@@ -151,7 +147,7 @@ class _Page4State extends State<Page4> {
           id: 22,
           answer_index: 3,
           image: 'assets/word_images/blank_image.png',
-          question: 'Goore mo cwol ni cwaak ojabo amooe?',
+          question: 'Goore mo cwøl ni cwaak ojabo amooe?',
           options: [
             'A  E  I  O  Ø',
             'A  E  B  C  Y',
@@ -184,7 +180,7 @@ class _Page4State extends State<Page4> {
           id: 25,
           answer_index: 0,
           image: 'assets/word_images/blank_image.png',
-          question: 'Goore mo cwol ni cwaak odiyyø amooe?',
+          question: 'Goore mo cwøl ni cwaak odiyyø amooe?',
           options: [
             'A  E  I  O  Ø',
             'A  E  B  C  Y',
