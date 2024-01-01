@@ -2,6 +2,8 @@
 # Dha Anywaa
 
 This is an app that help people who are interested in learning reading in anywaa language
+For more details check out this didicated website
+#https://dha-anywaa-app.netlify.app/
 
 ## The anywaa language app
 
@@ -22,6 +24,7 @@ If a user forgets how to read a word or letter, a simple click of a button promp
 The app is entirely free, allowing anyone interested in learning or improving reading skills in Dha Anywaa to access and utilize it without any cost.
    
 Best Wishes!
+
 
 
 ## Some dha anywaa app screen shots
