@@ -1,10 +1,10 @@
 
 # Dha Anywaa
 
-This is an app that help people who are interested in learning reading in anywaa language
-For more details check out this didicated website.
+This is an app that help people who are interested in learning reading in anywaa language.
 
-##https://dha-anywaa-app.netlify.app/
+For more details check out this didicated website.
+https://dha-anywaa-app.netlify.app/
 
 ## The anywaa language app
 
