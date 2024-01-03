@@ -8,6 +8,9 @@ import 'package:dha_anywaaa/pages/page4.dart';
 import 'package:dha_anywaaa/vowelLetter.dart';
 import 'package:dha_anywaaa/widgets/body.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+final Uri webUrl = Uri.parse('https://dha-anywaa-app.netlify.app/');
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -20,6 +23,12 @@ class _HomePageState extends State<HomePage> {
   bool themeValue = false;
   @override
   Widget build(BuildContext context) {
+    Future<void> _openUrl() async {
+      try {
+        await launchUrl(webUrl);
+      } catch (Exception) {}
+    }
+
     return DefaultTabController(
       initialIndex: 0,
       length: 4,
@@ -142,6 +151,19 @@ class _HomePageState extends State<HomePage> {
                 ),
                 leading: const Icon(
                   Icons.help_outline_outlined,
+                  color: Color.fromARGB(255, 4, 28, 49),
+                ),
+              ),
+              ListTile(
+                onTap: () {
+                  _openUrl();
+                },
+                title: const Text(
+                  'More',
+                  style: TextStyle(color: Color.fromARGB(255, 4, 28, 49)),
+                ),
+                leading: const Icon(
+                  Icons.more_horiz,
                   color: Color.fromARGB(255, 4, 28, 49),
                 ),
               ),
