@@ -87,9 +87,19 @@ class About extends StatelessWidget {
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                   ),
                 ),
-                Text(
-                  '2024 BellaTech',
-                  style: TextStyle(color: Color.fromARGB(255, 162, 158, 158)),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(92, 0, 0, 0),
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.copyright,
+                      color: Color.fromARGB(255, 162, 158, 158),
+                    ),
+                    title: Text(
+                      '2024 BellaTech',
+                      style:
+                          TextStyle(color: Color.fromARGB(255, 162, 158, 158)),
+                    ),
+                  ),
                 ),
                 TextButton.icon(
                     onPressed: () {
