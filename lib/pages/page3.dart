@@ -83,7 +83,7 @@ class _Page3State extends State<Page3> {
       Sentence(
           letter: "Ë",
           word: "Ëëli",
-          sentence: "Ariet tëëdö bäät ëëli ka araapraappi.",
+          sentence: "Ariet tëëdö bäät ëëli ka araapraapi.",
           audioUrl: "sentence_sound/Voice9.mp3"),
       Sentence(
           letter: "G",
