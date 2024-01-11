@@ -12,8 +12,39 @@ class VowelLetter extends StatefulWidget {
 }
 
 class _VowelLetterState extends State<VowelLetter> {
+  late AudioPlayer player;
+  late AssetSource path;
+  @override
+  void initState() {
+    super.initState();
+    player = AudioPlayer();
+  }
+
+  @override
+  void dispose() {
+    player.dispose();
+    super.dispose();
+  }
+
+  playAudio(path, isPlaying) async {
+    try {
+      if (isPlaying) {
+        await player.pause();
+        setState(() {
+          isPlaying = false;
+        });
+      } else {
+        await player.play(path);
+        setState(() {
+          isPlaying = true;
+        });
+      }
+    } catch (e) {}
+  }
+
   @override
   Widget build(BuildContext context) {
+    bool isPlaying = false;
     // goore mo cwol ni cwaak ojabo
     List vowelLetter = [
       Vowel(capitalLetter: 'Ä', smallLetter: 'ä', sound: 'sound/Ä.mp3'),
@@ -29,17 +60,6 @@ class _VowelLetterState extends State<VowelLetter> {
       Vowel(capitalLetter: 'O', smallLetter: 'o', sound: 'sound/O.mp3'),
       Vowel(capitalLetter: 'Ø', smallLetter: 'ø', sound: 'sound/Ø.mp3'),
     ];
-    late final AudioPlayer player;
-    late final AssetSource path;
-    void playAudio(index) {
-      try {
-        setState(() {
-          player = AudioPlayer();
-          path = AssetSource(vowelLetter[index].sound);
-          player.play(path);
-        });
-      } catch (e) {}
-    }
 
 // Grid widget
     Widget vowelGrid(items, {myIndex = 0}) {
@@ -56,7 +76,12 @@ class _VowelLetterState extends State<VowelLetter> {
           return Card(
             child: TextButton(
               onPressed: () {
-                playAudio(index + myIndex);
+                // playAudio(index + myIndex);
+                setState(() {
+                  // int currentIndex = index + myIndex;
+                  path = AssetSource(vowelLetter[myIndex + index].sound);
+                  playAudio(path, isPlaying);
+                });
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,

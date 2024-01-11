@@ -1,20 +1,47 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-
 import 'package:dha_anywaaa/letters_and_sound.dart';
 
 class Page1 extends StatefulWidget {
   const Page1({super.key});
-
   @override
   State<Page1> createState() => _Page1State();
 }
 
 class _Page1State extends State<Page1> {
+  late AudioPlayer player;
+  late AssetSource path;
+  @override
+  void initState() {
+    super.initState();
+    player = AudioPlayer();
+  }
+
+  @override
+  void dispose() {
+    player.dispose();
+    super.dispose();
+  }
+
+  playAudio(path, isPlaying) async {
+    try {
+      if (isPlaying) {
+        await player.pause();
+        setState(() {
+          isPlaying = false;
+        });
+      } else {
+        await player.play(path);
+        setState(() {
+          isPlaying = true;
+        });
+      }
+    } catch (e) {}
+  }
+
   @override
   Widget build(BuildContext context) {
-    late final AudioPlayer player;
-    late final AssetSource path;
+    bool isPlaying = false;
 
     List letterAndSound = [
       LetterSound(capitalLetter: 'A', smallLetter: 'a', sound: 'sound/A-1.MP3'),
@@ -53,14 +80,6 @@ class _Page1State extends State<Page1> {
       LetterSound(capitalLetter: 'Y', smallLetter: 'y', sound: 'sound/Y.mp3'),
     ];
 
-    void playAudio(index) {
-    try{  setState(() {
-        player = AudioPlayer();
-        path = AssetSource(letterAndSound[index].sound);
-        player.play(path);
-      });}catch(e){}
-    }
-
     return GridView.count(
       crossAxisCount: 3,
       children: List.generate(letterAndSound.length, (index) {
@@ -71,11 +90,13 @@ class _Page1State extends State<Page1> {
             shadowColor: Colors.grey[500],
             child: TextButton(
               onPressed: () {
-                playAudio(index);
+                setState(() {
+                  path = AssetSource(letterAndSound[index].sound);
+                  playAudio(path, isPlaying);
+                });
               },
               child: Center(
                 child: Row(
-                  // crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Text(letterAndSound[index].capitalLetter,

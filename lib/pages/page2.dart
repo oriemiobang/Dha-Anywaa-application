@@ -11,8 +11,39 @@ class Page2 extends StatefulWidget {
 }
 
 class _Page2State extends State<Page2> {
+  late AudioPlayer player;
+  late AssetSource path;
+  @override
+  void initState() {
+    super.initState();
+    player = AudioPlayer();
+  }
+
+  @override
+  void dispose() {
+    player.dispose();
+    super.dispose();
+  }
+
+  playAudio(path, isPlaying) async {
+    try {
+      if (isPlaying) {
+        await player.pause();
+        setState(() {
+          isPlaying = false;
+        });
+      } else {
+        await player.play(path);
+        setState(() {
+          isPlaying = true;
+        });
+      }
+    } catch (e) {}
+  }
+
   @override
   Widget build(BuildContext context) {
+    bool isPlaying = false;
     List wordsAndPictures = [
       Words(
           word: "Abäc",
@@ -132,19 +163,6 @@ class _Page2State extends State<Page2> {
           wordSound: 'word_sound/Yiie.mp3'),
     ];
 
-    late final AudioPlayer player;
-    late final AssetSource path;
-
-    void playAudio(index) {
-      try {
-        setState(() {
-          player = AudioPlayer();
-          path = AssetSource(wordsAndPictures[index].wordSound);
-          player.play(path);
-        });
-      } catch (e) {}
-    }
-
     return GridView.count(
       crossAxisCount: 2,
       children: List.generate(wordsAndPictures.length, (index) {
@@ -153,7 +171,8 @@ class _Page2State extends State<Page2> {
           child: TextButton(
               onPressed: () {
                 setState(() {
-                  playAudio(index);
+                  path = AssetSource(wordsAndPictures[index].wordSound);
+                  playAudio(path, isPlaying);
                 });
               },
               child: Column(
@@ -167,7 +186,6 @@ class _Page2State extends State<Page2> {
                       alignment: Alignment.topCenter,
                     ),
                   ),
-                  // if (index == 0)
                   Text(
                     wordsAndPictures[index].word,
                     style: TextStyle(

@@ -25,7 +25,13 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     Future<void> _openUrl() async {
       try {
-        await launchUrl(webUrl);
+        await launchUrl(
+          webUrl,
+          webOnlyWindowName: '_blank',
+          mode: LaunchMode.externalApplication,
+          webViewConfiguration:
+              const WebViewConfiguration(enableJavaScript: true),
+        );
       } catch (Exception) {}
     }
 
@@ -156,7 +162,9 @@ class _HomePageState extends State<HomePage> {
               ),
               ListTile(
                 onTap: () {
-                  _openUrl();
+                  setState(() {
+                    _openUrl();
+                  });
                 },
                 title: const Text(
                   'More',
@@ -170,15 +178,6 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(
                 height: 300,
               ),
-              const Divider(),
-              const Padding(
-                padding: EdgeInsets.all(10),
-                child: SelectableText(
-                  'Designed and developed by\nName: Oriemi Obang Oriemi\n'
-                  'Email: oriemiobango@gmail.com',
-                  style: TextStyle(color: Color.fromARGB(255, 158, 152, 152)),
-                ),
-              )
             ],
           ),
         ),

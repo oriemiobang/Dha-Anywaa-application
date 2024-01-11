@@ -1,10 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+final Uri webUrl = Uri.parse('https://dha-anywaa-privacy.netlify.app/');
 
 class About extends StatelessWidget {
   const About({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // String? encodeQueryParameters(Map<String, String> params) {
+    //   return params.entries
+    //       .map((MapEntry<String, String> e) =>
+    //           '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+    //       .join('&');
+    // }
+
+    void sendEmail() {
+      final Uri emailLaunchUri = Uri(
+        scheme: 'mailto',
+        path: 'oriemiobango@gmail.com',
+        // query: encodeQueryParameters(<String, String>{
+        //   'subject': 'Example Subject & Symbols are allowed!',
+        // }),
+      );
+      launchUrl(emailLaunchUri);
+    }
+
+    Future<void> _openUrl() async {
+      try {
+        await launchUrl(
+          webUrl,
+          webOnlyWindowName: '_blank',
+          mode: LaunchMode.externalApplication,
+          webViewConfiguration:
+              const WebViewConfiguration(enableJavaScript: true),
+        );
+      } catch (Exception) {}
+    }
+
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 242, 239, 239),
       appBar: AppBar(
@@ -20,13 +53,60 @@ class About extends StatelessWidget {
           child: SafeArea(
               child: Padding(
             padding: const EdgeInsets.all(10.0),
-            child: SelectableText(
-                "\nThis is a Dha Anywaa app designed by a university student to assist individuals in learning to read the Anywaa language. It is user-friendly, featuring both pictures and audio elements to enhance the learning experience. Geared towards absolute beginners, the app guides users through each step, facilitating the process of reading in Dha Anywaa.\n\n"
-                "The application was developed by a university student named Oriemi Obang Oriemi, aiming to support those interested in acquiring reading skills in Dha Anywaa. Dha Anywaa is a language belonging to the larger Luo family group, primarily spoken in East Africa (Ethiopia, South Sudan...). It possesses its own set of alphabets and unique rules. This mobile application focuses on reading alphabets, words, and sentences in the Anywaa language.\n\n"
-                "The initial page of the app emphasizes both uppercase and lowercase alphabets. The second page focuses on words and their corresponding images, utilizing individual letters to form words. The third page centers around constructing sentences based on the words introduced in page 2. Lastly, the fourth page involves testing the knowledge acquired from pages 1, 2, and 3.\n\n"
-                "The app ensures a guided learning experience, eliminating the need for external guidance or someone to read aloud. If a user forgets how to read a word or letter, a simple click of a button prompts the app to pronounce it."
-                "The app is entirely free, allowing anyone interested in learning or improving reading skills in Dha Anywaa to access and utilize it without any cost.\n\n"
-                "Best Wishes!"),
+            child: Column(
+              children: [
+                Container(
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 100,
+                        child: Image.asset('assets/word_images/awal_icon.png'),
+                      ),
+                      Text(
+                        'Dha Anywaa',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 18),
+                      )
+                    ],
+                  ),
+                ),
+                Divider(
+                  color: Color.fromARGB(255, 4, 28, 49),
+                ),
+                SelectableText(
+                    "\nThis is a Dha Anywaa app designed to assist individuals in learning to read the Anywaa language."
+                    " It is user-friendly, featuring both pictures and audio elements to enhance the learning experience. Geared towards absolute beginners,"
+                    " the app guides users through each step, facilitating the process of reading in Dha Anywaa.\n\n"),
+                Container(
+                  // height: 40,
+                  decoration: BoxDecoration(
+                      // color: Color.fromARGB(255, 223, 212, 212),
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Text(
+                    'Version: 1.0.3',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  ),
+                ),
+                Text(
+                  '2024 BellaTech',
+                  style: TextStyle(color: Color.fromARGB(255, 162, 158, 158)),
+                ),
+                TextButton.icon(
+                    onPressed: () {
+                      _openUrl();
+                    },
+                    icon: Icon(Icons.privacy_tip),
+                    label: Text('Privacy Policy')),
+                Container(
+                  child: TextButton.icon(
+                      onPressed: () {
+                        sendEmail();
+                      },
+                      icon: Icon(Icons.quick_contacts_mail),
+                      label: Text('Contact Us')),
+                )
+              ],
+            ),
           )),
         ),
       ),
