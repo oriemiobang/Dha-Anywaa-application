@@ -1,7 +1,7 @@
 class Questions {
-  int id, answer_index;
+  int id;
   String image;
-  String question;
+  String question, answer_index;
   List<String> options;
 
   Questions(

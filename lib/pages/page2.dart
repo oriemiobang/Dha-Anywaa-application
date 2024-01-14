@@ -12,7 +12,7 @@ class Page2 extends StatefulWidget {
 
 class _Page2State extends State<Page2> {
   late AudioPlayer player;
-  late AssetSource path;
+  AssetSource path = AssetSource('');
   @override
   void initState() {
     super.initState();
@@ -25,25 +25,25 @@ class _Page2State extends State<Page2> {
     super.dispose();
   }
 
-  playAudio(path, isPlaying) async {
-    try {
-      if (isPlaying) {
-        await player.pause();
-        setState(() {
-          isPlaying = false;
-        });
-      } else {
-        await player.play(path);
-        setState(() {
-          isPlaying = true;
-        });
-      }
-    } catch (e) {}
-  }
+  // playAudio(path, isPlaying) async {
+  //   try {
+  //     if (isPlaying) {
+  //       await player.pause();
+  //       setState(() {
+  //         isPlaying = false;
+  //       });
+  //     } else {
+  //       await player.play(path);
+  //       setState(() {
+  //         isPlaying = true;
+  //       });
+  //     }
+  //   } catch (e) {}
+  // }
 
   @override
   Widget build(BuildContext context) {
-    bool isPlaying = false;
+    // bool isPlaying = false;
     List wordsAndPictures = [
       Words(
           word: "Abäc",
@@ -170,10 +170,13 @@ class _Page2State extends State<Page2> {
           color: Colors.grey[98],
           child: TextButton(
               onPressed: () {
-                setState(() {
-                  path = AssetSource(wordsAndPictures[index].wordSound);
-                  playAudio(path, isPlaying);
-                });
+                try {
+                  setState(() {
+                    path = AssetSource(wordsAndPictures[index].wordSound);
+
+                    player.play(path);
+                  });
+                } catch (Exception) {}
               },
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

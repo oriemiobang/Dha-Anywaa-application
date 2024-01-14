@@ -13,7 +13,7 @@ class VowelLetter extends StatefulWidget {
 
 class _VowelLetterState extends State<VowelLetter> {
   late AudioPlayer player;
-  late AssetSource path;
+  AssetSource path = AssetSource('');
   @override
   void initState() {
     super.initState();
@@ -26,25 +26,25 @@ class _VowelLetterState extends State<VowelLetter> {
     super.dispose();
   }
 
-  playAudio(path, isPlaying) async {
-    try {
-      if (isPlaying) {
-        await player.pause();
-        setState(() {
-          isPlaying = false;
-        });
-      } else {
-        await player.play(path);
-        setState(() {
-          isPlaying = true;
-        });
-      }
-    } catch (e) {}
-  }
+  // playAudio(path, isPlaying) async {
+  //   try {
+  //     if (isPlaying) {
+  //       await player.pause();
+  //       setState(() {
+  //         isPlaying = false;
+  //       });
+  //     } else {
+  //       await player.play(path);
+  //       setState(() {
+  //         isPlaying = true;
+  //       });
+  //     }
+  //   } catch (e) {}
+  // }
 
   @override
   Widget build(BuildContext context) {
-    bool isPlaying = false;
+    // bool isPlaying = false;
     // goore mo cwol ni cwaak ojabo
     List vowelLetter = [
       Vowel(capitalLetter: 'Ä', smallLetter: 'ä', sound: 'sound/Ä.mp3'),
@@ -76,12 +76,15 @@ class _VowelLetterState extends State<VowelLetter> {
           return Card(
             child: TextButton(
               onPressed: () {
-                // playAudio(index + myIndex);
-                setState(() {
-                  // int currentIndex = index + myIndex;
-                  path = AssetSource(vowelLetter[myIndex + index].sound);
-                  playAudio(path, isPlaying);
-                });
+                try {
+                  // playAudio(index + myIndex);
+                  setState(() {
+                    // int currentIndex = index + myIndex;
+                    path = AssetSource(vowelLetter[myIndex + index].sound);
+                    // playAudio(path, isPlaying);
+                    player.play(path);
+                  });
+                } catch (Exception) {}
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,

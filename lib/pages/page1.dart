@@ -8,40 +8,42 @@ class Page1 extends StatefulWidget {
   State<Page1> createState() => _Page1State();
 }
 
-class _Page1State extends State<Page1> {
+class _Page1State extends State<Page1> with WidgetsBindingObserver {
   late AudioPlayer player;
-  late AssetSource path;
+  AssetSource path = AssetSource('');
   @override
   void initState() {
     super.initState();
     player = AudioPlayer();
+    WidgetsBinding.instance.removeObserver(this);
   }
 
   @override
   void dispose() {
     player.dispose();
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 
-  playAudio(path, isPlaying) async {
-    try {
-      if (isPlaying) {
-        await player.pause();
-        setState(() {
-          isPlaying = false;
-        });
-      } else {
-        await player.play(path);
-        setState(() {
-          isPlaying = true;
-        });
-      }
-    } catch (e) {}
-  }
+  // playAudio(path, isPlaying) async {
+  //   try {
+  //     if (isPlaying) {
+  //       await player.pause();
+  //       setState(() {
+  //         isPlaying = false;
+  //       });
+  //     } else {
+  //       await player.play(path);
+  //       setState(() {
+  //         isPlaying = true;
+  //       });
+  //     }
+  //   } catch (e) {}
+  // }
 
   @override
   Widget build(BuildContext context) {
-    bool isPlaying = false;
+    // bool isPlaying = false;
 
     List letterAndSound = [
       LetterSound(capitalLetter: 'A', smallLetter: 'a', sound: 'sound/A-1.MP3'),
@@ -90,10 +92,16 @@ class _Page1State extends State<Page1> {
             shadowColor: Colors.grey[500],
             child: TextButton(
               onPressed: () {
-                setState(() {
-                  path = AssetSource(letterAndSound[index].sound);
-                  playAudio(path, isPlaying);
-                });
+                try {
+                  setState(() async {
+                    path = AssetSource(letterAndSound[index].sound);
+                    player.play(path);
+                    // if(player.)
+                    // playAudio(path, isPlaying);
+                  });
+                } catch (Exception) {
+                  print('oops');
+                }
               },
               child: Center(
                 child: Row(

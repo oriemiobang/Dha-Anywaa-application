@@ -2,10 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 final Uri webUrl = Uri.parse('https://dha-anywaa-privacy.netlify.app/');
+final Uri moreWebUrl = Uri.parse('https://dha-anywaa-app.netlify.app/');
 
-class About extends StatelessWidget {
+// class About extends StatelessWidget {
+//   const About({super.key});
+class About extends StatefulWidget {
   const About({super.key});
 
+  State<About> createState() => _AboutState();
+}
+
+class _AboutState extends State<About> {
   @override
   Widget build(BuildContext context) {
     // String? encodeQueryParameters(Map<String, String> params) {
@@ -14,6 +21,17 @@ class About extends StatelessWidget {
     //           '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
     //       .join('&');
     // }
+    Future<void> _openMoreUrl() async {
+      try {
+        await launchUrl(
+          moreWebUrl,
+          webOnlyWindowName: '_blank',
+          mode: LaunchMode.externalApplication,
+          webViewConfiguration:
+              const WebViewConfiguration(enableJavaScript: true),
+        );
+      } catch (Exception) {}
+    }
 
     void sendEmail() {
       final Uri emailLaunchUri = Uri(
@@ -88,7 +106,7 @@ class About extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(92, 0, 0, 0),
+                  padding: const EdgeInsets.fromLTRB(99, 0, 0, 0),
                   child: ListTile(
                     leading: Icon(
                       Icons.copyright,
@@ -103,17 +121,32 @@ class About extends StatelessWidget {
                 ),
                 TextButton.icon(
                     onPressed: () {
-                      _openUrl();
+                      setState(() {
+                        _openUrl();
+                      });
+                      ;
                     },
                     icon: Icon(Icons.privacy_tip),
                     label: Text('Privacy Policy')),
                 Container(
                   child: TextButton.icon(
                       onPressed: () {
-                        sendEmail();
+                        setState(() {
+                          sendEmail();
+                        });
                       },
                       icon: Icon(Icons.quick_contacts_mail),
                       label: Text('Contact Us')),
+                ),
+                Container(
+                  child: TextButton.icon(
+                      onPressed: () {
+                        setState(() {
+                          _openMoreUrl();
+                        });
+                      },
+                      icon: Icon(Icons.more_horiz_outlined),
+                      label: Text('Read More')),
                 )
               ],
             ),

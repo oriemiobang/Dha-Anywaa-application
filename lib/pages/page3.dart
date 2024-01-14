@@ -12,7 +12,7 @@ class Page3 extends StatefulWidget {
 
 class _Page3State extends State<Page3> {
   late AudioPlayer player;
-  late AssetSource path;
+  AssetSource path = AssetSource('');
   @override
   void initState() {
     super.initState();
