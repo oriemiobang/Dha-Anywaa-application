@@ -153,6 +153,19 @@ class _AboutState extends State<About> {
           )),
         ),
       ),
+      bottomNavigationBar: Container(
+        color: const Color.fromARGB(255, 4, 28, 49),
+        child: Container(
+          padding: EdgeInsets.fromLTRB(125, 5, 0, 5),
+          child: Text(
+            'Developed by: BellaTech',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 14,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
