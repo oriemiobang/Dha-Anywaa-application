@@ -34,6 +34,10 @@ class _Page3State extends State<Page3> {
         });
       } else {
         await player.play(path);
+        int duration = (await player.getDuration()) as int;
+        int durationInseconds = duration / 1000 as int;
+        await Duration(seconds: durationInseconds);
+        player.stop();
         setState(() {
           isPlaying = true;
         });

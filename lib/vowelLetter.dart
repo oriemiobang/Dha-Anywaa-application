@@ -78,11 +78,16 @@ class _VowelLetterState extends State<VowelLetter> {
               onPressed: () {
                 try {
                   // playAudio(index + myIndex);
-                  setState(() {
+                  setState(() async {
                     // int currentIndex = index + myIndex;
                     path = AssetSource(vowelLetter[myIndex + index].sound);
                     // playAudio(path, isPlaying);
-                    player.play(path);
+                    await player.play(path);
+                    int duration = (await player.getDuration()) as int;
+                    int durationInseconds = duration / 1000 as int;
+                    await Duration(seconds: durationInseconds);
+
+                    player.stop();
                   });
                 } catch (Exception) {}
               },

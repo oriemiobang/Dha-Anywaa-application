@@ -8,20 +8,19 @@ class Page1 extends StatefulWidget {
   State<Page1> createState() => _Page1State();
 }
 
-class _Page1State extends State<Page1> with WidgetsBindingObserver {
+class _Page1State extends State<Page1> {
   late AudioPlayer player;
   AssetSource path = AssetSource('');
   @override
   void initState() {
     super.initState();
     player = AudioPlayer();
-    WidgetsBinding.instance.removeObserver(this);
   }
 
   @override
   void dispose() {
     player.dispose();
-    WidgetsBinding.instance.removeObserver(this);
+
     super.dispose();
   }
 
@@ -95,7 +94,12 @@ class _Page1State extends State<Page1> with WidgetsBindingObserver {
                 try {
                   setState(() async {
                     path = AssetSource(letterAndSound[index].sound);
-                    player.play(path);
+                    await player.play(path);
+                    int duration = (await player.getDuration()) as int;
+                    int durationInseconds = duration / 1000 as int;
+                    await Duration(seconds: durationInseconds);
+
+                    player.stop();
                     // if(player.)
                     // playAudio(path, isPlaying);
                   });

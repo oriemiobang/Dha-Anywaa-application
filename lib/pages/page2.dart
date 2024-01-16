@@ -171,10 +171,15 @@ class _Page2State extends State<Page2> {
           child: TextButton(
               onPressed: () {
                 try {
-                  setState(() {
+                  setState(() async {
                     path = AssetSource(wordsAndPictures[index].wordSound);
 
-                    player.play(path);
+                    await player.play(path);
+                    int duration = (await player.getDuration()) as int;
+                    int durationInseconds = duration / 1000 as int;
+                    await Duration(seconds: durationInseconds);
+
+                    player.stop();
                   });
                 } catch (Exception) {}
               },
