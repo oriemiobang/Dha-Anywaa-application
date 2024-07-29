@@ -73,6 +73,7 @@ flutter:
     - assets/sound/
     - assets/word_images/
     - assets/sentence_sound/
+    - assets/category_image/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

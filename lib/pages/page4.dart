@@ -243,183 +243,189 @@ class _Page4State extends State<Page4> {
   @override
   Widget build(BuildContext context) {
     final PageController controller = PageController();
-    return PageView.builder(
-        scrollDirection: Axis.vertical,
-        controller: controller,
-        itemCount: questionsList.length,
-        itemBuilder: (context, int index) {
-          return Padding(
-            padding: const EdgeInsets.fromLTRB(5, 10, 5, 0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    '($finalResult / ${questionsList.length}) Jier løk pïëc mana näk kare.',
-                    style: TextStyle(
-                        color: Color.fromARGB(255, 3, 44, 77),
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20),
+    return Scaffold(
+      appBar: AppBar(forceMaterialTransparency: true),
+      body: PageView.builder(
+          scrollDirection: Axis.vertical,
+          controller: controller,
+          itemCount: questionsList.length,
+          itemBuilder: (context, int index) {
+            return Padding(
+              padding: const EdgeInsets.fromLTRB(5, 10, 5, 0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      '($finalResult / ${questionsList.length}) Jier løk pïëc mana näk kare.',
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 3, 44, 77),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
+                    ),
                   ),
-                ),
-                Column(
-                  children: [
-                    Card(
-                      color: Colors.grey[98],
-                      child: Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Container(
-                                height: 140,
-                                width: 350,
-                                child: Image(
-                                  image: AssetImage(
-                                    questionsList[index].image,
+                  Column(
+                    children: [
+                      Card(
+                        color: Colors.grey[98],
+                        child: Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Container(
+                                  height: 140,
+                                  width: 350,
+                                  child: Image(
+                                    image: AssetImage(
+                                      questionsList[index].image,
+                                    ),
+                                    alignment: Alignment.topCenter,
                                   ),
-                                  alignment: Alignment.topCenter,
                                 ),
-                              ),
-                              SizedBox(
-                                height: 15,
-                              ),
-                              Text(
-                                '${index + 1} ${questionsList[index].question}',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18.5,
+                                SizedBox(
+                                  height: 15,
                                 ),
-                              ),
-                            ],
-                          )),
-                    )
-                  ],
-                ),
-                Divider(),
-                Expanded(
-                  child: ListView.builder(
-                      itemCount: 4,
-                      itemBuilder: (context, int listViewIndex) {
-                        return Card(
-                          child: Container(
-                            height: 60,
-                            decoration: BoxDecoration(
-                                color: (selectedIndex == listViewIndex) &&
-                                        (PageSelectedIndex == index)
-                                    ? (questionsList[index]
-                                                .options[listViewIndex] ==
-                                            questionsList[index].answer_index
-                                        ? Colors.green
-                                        : Colors.red)
-                                    : (questionsList[index]
-                                                    .options[listViewIndex] ==
-                                                questionsList[index]
-                                                    .answer_index &&
-                                            PageSelectedIndex == index
-                                        ? Colors.green.withOpacity(0.7)
-                                        : null),
-                                borderRadius: BorderRadius.circular(10)),
-                            child: AbsorbPointer(
-                              absorbing: PageSelectedIndex == index,
-                              child: ListTile(
-                                onTap: () {
-                                  setState(() {
-                                    answeredQuestions
-                                        .add(questionsList[index].id);
-                                    int count = answeredQuestions
-                                        .where((number) =>
-                                            number == questionsList[index].id)
-                                        .length;
+                                Text(
+                                  '${index + 1} ${questionsList[index].question}',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18.5,
+                                  ),
+                                ),
+                              ],
+                            )),
+                      )
+                    ],
+                  ),
+                  Divider(),
+                  Expanded(
+                    child: ListView.builder(
+                        itemCount: 4,
+                        itemBuilder: (context, int listViewIndex) {
+                          return Card(
+                            child: Container(
+                              height: 60,
+                              decoration: BoxDecoration(
+                                  color: (selectedIndex == listViewIndex) &&
+                                          (PageSelectedIndex == index)
+                                      ? (questionsList[index]
+                                                  .options[listViewIndex] ==
+                                              questionsList[index].answer_index
+                                          ? Colors.green
+                                          : Colors.red)
+                                      : (questionsList[index]
+                                                      .options[listViewIndex] ==
+                                                  questionsList[index]
+                                                      .answer_index &&
+                                              PageSelectedIndex == index
+                                          ? Colors.green.withOpacity(0.7)
+                                          : null),
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: AbsorbPointer(
+                                absorbing: PageSelectedIndex == index,
+                                child: ListTile(
+                                  onTap: () {
+                                    setState(() {
+                                      answeredQuestions
+                                          .add(questionsList[index].id);
+                                      int count = answeredQuestions
+                                          .where((number) =>
+                                              number == questionsList[index].id)
+                                          .length;
 
-                                    PageSelectedIndex = index;
-                                    selectedIndex = listViewIndex;
+                                      PageSelectedIndex = index;
+                                      selectedIndex = listViewIndex;
 
-                                    if (questionsList[index]
-                                                .options[listViewIndex] ==
-                                            questionsList[index].answer_index &&
-                                        count == 1) {
-                                      finalResult += 1;
-                                    }
-                                  });
-                                },
-                                leading: Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                                  child: Icon(Icons.circle_outlined),
-                                ),
-                                title: Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                                  child: Text(
-                                    questionsList[index].options[listViewIndex],
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
+                                      if (questionsList[index]
+                                                  .options[listViewIndex] ==
+                                              questionsList[index]
+                                                  .answer_index &&
+                                          count == 1) {
+                                        finalResult += 1;
+                                      }
+                                    });
+                                  },
+                                  leading: Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                                    child: Icon(Icons.circle_outlined),
+                                  ),
+                                  title: Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                                    child: Text(
+                                      questionsList[index]
+                                          .options[listViewIndex],
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                        );
-                      }),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      TextButton(
-                        onPressed: () {
-                          setState(() {
-                            controller.previousPage(
-                                duration: Duration(milliseconds: 700),
-                                curve: Curves.easeInOut);
-                          });
-                        },
-                        child: Row(
-                          children: [
-                            Icon(Icons.navigate_before),
-                            Text(
-                              'Døø Køøri',
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            )
-                          ],
-                        ),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          setState(() {
-                            if ((index + 1) == questionsList.length) {
-                              Result(finalResult: finalResult);
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Result(
-                                            finalResult: finalResult,
-                                          )));
-                            } else {
-                              controller.nextPage(
+                          );
+                        }),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        TextButton(
+                          onPressed: () {
+                            setState(() {
+                              controller.previousPage(
                                   duration: Duration(milliseconds: 700),
                                   curve: Curves.easeInOut);
-                            }
-                          });
-                        },
-                        child: Row(
-                          children: [
-                            Text('Pöödhï',
-                                style: TextStyle(fontWeight: FontWeight.bold)),
-                            Icon(Icons.navigate_next),
-                          ],
+                            });
+                          },
+                          child: Row(
+                            children: [
+                              Icon(Icons.navigate_before),
+                              Text(
+                                'Døø Køøri',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              )
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-          );
-        });
+                        TextButton(
+                          onPressed: () {
+                            setState(() {
+                              if ((index + 1) == questionsList.length) {
+                                Result(finalResult: finalResult);
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Result(
+                                              finalResult: finalResult,
+                                            )));
+                              } else {
+                                controller.nextPage(
+                                    duration: Duration(milliseconds: 700),
+                                    curve: Curves.easeInOut);
+                              }
+                            });
+                          },
+                          child: Row(
+                            children: [
+                              Text('Pöödhï',
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
+                              Icon(Icons.navigate_next),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            );
+          }),
+    );
   }
 }

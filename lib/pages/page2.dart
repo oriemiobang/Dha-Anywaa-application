@@ -122,7 +122,7 @@ class _Page2State extends State<Page2> {
           imageUrl: "assets/word_images/croc.png",
           wordSound: 'word_sound/Nyaang.mp3'),
       Words(
-          word: "Odiëk",
+          word: "Odïëk",
           imageUrl: "assets/word_images/hayna.png",
           wordSound: 'word_sound/Odiek.mp3'),
       Words(
@@ -163,48 +163,75 @@ class _Page2State extends State<Page2> {
           wordSound: 'word_sound/Yiie.mp3'),
     ];
 
-    return GridView.count(
-      crossAxisCount: 2,
-      children: List.generate(wordsAndPictures.length, (index) {
-        return Card(
-          color: Colors.grey[98],
-          child: TextButton(
-              onPressed: () {
-                try {
-                  setState(() async {
-                    path = AssetSource(wordsAndPictures[index].wordSound);
+    return Scaffold(
+      appBar: AppBar(forceMaterialTransparency: true),
+      body: Column(
+        children: [
+          ListTile(
+            title: Text(
+              'Dööttï',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 30,
+              ),
+            ),
+            subtitle: Text(
+              'Words',
+              style: TextStyle(fontSize: 20, color: Colors.grey[700]),
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Expanded(
+            child: GridView.count(
+              crossAxisCount: 2,
+              children: List.generate(wordsAndPictures.length, (index) {
+                return Card(
+                  color: Colors.grey[98],
+                  child: TextButton(
+                      onPressed: () {
+                        try {
+                          setState(() async {
+                            path =
+                                AssetSource(wordsAndPictures[index].wordSound);
 
-                    await player.play(path);
-                    int duration = (await player.getDuration()) as int;
-                    int durationInseconds = duration / 1000 as int;
-                    await Duration(seconds: durationInseconds);
+                            await player.play(path);
+                            int duration = (await player.getDuration()) as int;
+                            int durationInseconds = duration / 1000 as int;
+                            await Duration(seconds: durationInseconds);
 
-                    player.stop();
-                  });
-                } catch (Exception) {}
-              },
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Expanded(
-                    child: Image(
-                      image: AssetImage(
-                        wordsAndPictures[index].imageUrl,
-                      ),
-                      alignment: Alignment.topCenter,
-                    ),
-                  ),
-                  Text(
-                    wordsAndPictures[index].word,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18.5,
-                    ),
-                  ),
-                ],
-              )),
-        );
-      }),
+                            player.stop();
+                          });
+                        } catch (Exception) {}
+                      },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Expanded(
+                            child: Image(
+                              image: AssetImage(
+                                wordsAndPictures[index].imageUrl,
+                              ),
+                              alignment: Alignment.topCenter,
+                            ),
+                          ),
+                          Text(
+                            wordsAndPictures[index].word,
+                            style: TextStyle(
+                              color: Colors.blue,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18.5,
+                            ),
+                          ),
+                        ],
+                      )),
+                );
+              }),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

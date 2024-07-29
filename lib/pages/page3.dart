@@ -196,48 +196,77 @@ class _Page3State extends State<Page3> {
           audioUrl: "sentence_sound/Voice30.mp3"),
     ];
 
-    return ListView.builder(
-        itemCount: wordAndSentence.length,
-        itemBuilder: (BuildContext context, int index) {
-          return Card(
-            child: Container(
-              padding: EdgeInsets.fromLTRB(2, 0, 0, 15),
-              child: ListTile(
-                onTap: () {
-                  setState(() {
-                    path = AssetSource(wordAndSentence[index].audioUrl);
-                    playAudio(index, path, isPlaying);
-                  });
-                },
-                title: Text(
-                  wordAndSentence[index].word,
-                  style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: const Color.fromARGB(255, 3, 44, 77),
-                      height: 2,
-                      letterSpacing: 1),
-                ),
-                // trailing: Icon(Icons.mic_rounded),
-                leading: Text(
-                  wordAndSentence[index].letter,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 31,
-                    color: Color.fromARGB(176, 156, 5, 5),
-                  ),
-                ),
-                subtitle: Text(
-                  wordAndSentence[index].sentence,
-                  style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      letterSpacing: 1,
-                      fontSize: 18,
-                      color: Color.fromARGB(255, 95, 12, 108)),
+    return Scaffold(
+      appBar: AppBar(forceMaterialTransparency: true),
+      body: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Column(
+          children: [
+            ListTile(
+              title: Text(
+                'Lup',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 30,
                 ),
               ),
+              subtitle: Text(
+                'Sentence',
+                style: TextStyle(fontSize: 20, color: Colors.grey[700]),
+              ),
             ),
-          );
-        });
+            SizedBox(
+              height: 10,
+            ),
+            Expanded(
+              child: ListView.builder(
+                  itemCount: wordAndSentence.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Card(
+                      child: Container(
+                        padding: EdgeInsets.fromLTRB(2, 0, 0, 15),
+                        child: ListTile(
+                          onTap: () {
+                            setState(() {
+                              path =
+                                  AssetSource(wordAndSentence[index].audioUrl);
+                              playAudio(index, path, isPlaying);
+                            });
+                          },
+                          title: Text(
+                            wordAndSentence[index].word,
+                            style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                                color: const Color.fromARGB(255, 3, 44, 77),
+                                height: 2,
+                                letterSpacing: 1),
+                          ),
+                          // trailing: Icon(Icons.mic_rounded),
+                          leading: Text(
+                            wordAndSentence[index].letter,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 31,
+                              color: Color.fromARGB(176, 156, 5, 5),
+                            ),
+                          ),
+                          subtitle: Text(
+                            wordAndSentence[index].sentence,
+                            style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                letterSpacing: 1,
+                                fontSize: 18,
+                                color: Colors.blue),
+                          ),
+                        ),
+                      ),
+                    );
+                  }),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

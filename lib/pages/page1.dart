@@ -81,54 +81,84 @@ class _Page1State extends State<Page1> {
       LetterSound(capitalLetter: 'Y', smallLetter: 'y', sound: 'sound/Y.mp3'),
     ];
 
-    return GridView.count(
-      crossAxisCount: 3,
-      children: List.generate(letterAndSound.length, (index) {
-        return Padding(
-          padding: const EdgeInsets.all(1),
-          child: Card(
-            color: Colors.grey[100],
-            shadowColor: Colors.grey[500],
-            child: TextButton(
-              onPressed: () {
-                try {
-                  setState(() async {
-                    path = AssetSource(letterAndSound[index].sound);
-                    await player.play(path);
-                    int duration = (await player.getDuration()) as int;
-                    int durationInseconds = duration / 1000 as int;
-                    await Duration(seconds: durationInseconds);
-
-                    player.stop();
-                    // if(player.)
-                    // playAudio(path, isPlaying);
-                  });
-                } catch (Exception) {
-                  print('oops');
-                }
-              },
-              child: Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text(letterAndSound[index].capitalLetter,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 30,
-                          color: Colors.grey[700],
-                        )),
-                    Text(
-                      letterAndSound[index].smallLetter,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 25),
-                    )
-                  ],
-                ),
+    return Scaffold(
+      appBar: AppBar(
+        forceMaterialTransparency: true,
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(15),
+        child: Column(
+          children: [
+            ListTile(
+              title: Text(
+                'Göörë',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+              ),
+              subtitle: Text(
+                'Alphabets',
+                style: TextStyle(fontSize: 20, color: Colors.grey[700]),
               ),
             ),
-          ),
-        );
-      }),
+            SizedBox(
+              height: 10,
+            ),
+            Expanded(
+              child: GridView.count(
+                crossAxisCount: 2,
+                children: List.generate(letterAndSound.length, (index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(1),
+                    child: Card(
+                      color: Colors.grey[100],
+                      shadowColor: Colors.grey[500],
+                      child: TextButton(
+                        onPressed: () {
+                          try {
+                            setState(() async {
+                              path = AssetSource(letterAndSound[index].sound);
+                              await player.play(path);
+                              int duration =
+                                  (await player.getDuration()) as int;
+                              int durationInseconds = duration / 1000 as int;
+                              await Duration(seconds: durationInseconds);
+
+                              player.stop();
+                              // if(player.)
+                              // playAudio(path, isPlaying);
+                            });
+                          } catch (Exception) {
+                            print('oops');
+                          }
+                        },
+                        child: Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(letterAndSound[index].capitalLetter,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 75,
+                                    color: Colors.grey[700],
+                                  )),
+                              Text(
+                                letterAndSound[index].smallLetter,
+                                style: const TextStyle(
+                                    color: Colors.blue,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 30),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                }),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
