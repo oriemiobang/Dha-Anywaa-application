@@ -5,6 +5,8 @@ import 'package:dha_anywaaa/pages/page1.dart';
 import 'package:dha_anywaaa/pages/page2.dart';
 import 'package:dha_anywaaa/pages/page3.dart';
 import 'package:dha_anywaaa/pages/page4.dart';
+import 'package:dha_anywaaa/nameEntry.dart';
+import 'package:dha_anywaaa/wraper.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -24,13 +26,16 @@ class MyApp extends StatelessWidget {
         primaryColor: const Color.fromARGB(255, 2, 27, 48),
       ),
       routes: {
-        '/': (context) => HomePage(),
+        // '/': (context) => HomePage(),
+        '/': (context) => Wrapper(),
         'number': (context) => Number(),
         'alphabet': (context) => Page1(),
         'word': (context) => Page2(),
         'shape': (context) => Shpae(),
         'reading': (context) => Page3(),
-        'quiz': (context) => Page4()
+        'quiz': (context) => Page4(),
+        'home_page': (context) => HomePage(),
+        'name_entry': (context) => NameEntry()
       },
     );
   }

@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_construct
 import 'package:dha_anywaaa/about.dart';
+import 'package:dha_anywaaa/components/savedData.dart';
 import 'package:dha_anywaaa/help.dart';
 // import 'package:dha_anywaaa/pages/page1.dart';
 // import 'package:dha_anywaaa/pages/page2.dart';
@@ -20,6 +21,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  SavedData savedData = SavedData();
   // 'O ruu ni cämö',
   //   'O cämö ki wïth caami mo thööth',
   //   'O ruu ni bäng gïn mo ee camø',
@@ -75,6 +77,21 @@ class _HomePageState extends State<HomePage> {
     }
   ];
   bool themeValue = false;
+  String name = '';
+  @override
+  void initState() {
+    _refresh();
+    // TODO: implement initState
+    super.initState();
+  }
+
+  void _refresh() async {
+    final currentName = await savedData.getName();
+    setState(() {
+      name = currentName;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     Future<void> _openUrl() async {
@@ -202,6 +219,20 @@ class _HomePageState extends State<HomePage> {
                   color: Color.fromARGB(255, 4, 28, 49),
                 ),
               ),
+              ListTile(
+                onTap: () {
+                  savedData.setName('guess');
+                  Navigator.pushReplacementNamed(context, 'name_entry');
+                },
+                title: const Text(
+                  'Log out',
+                  style: TextStyle(color: Color.fromARGB(255, 4, 28, 49)),
+                ),
+                leading: const Icon(
+                  Icons.more_horiz,
+                  color: Color.fromARGB(255, 4, 28, 49),
+                ),
+              ),
               const SizedBox(
                 height: 300,
               ),
@@ -226,7 +257,7 @@ class _HomePageState extends State<HomePage> {
                 style: TextStyle(fontSize: 20),
               ),
               Text(
-                'Obulu',
+                '$name',
                 style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 20),
