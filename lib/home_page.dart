@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> {
       'engName': 'Colors',
       'anyName': 'Kït',
       'imageLink': 'assets/category_image/colors_4.png',
-      'route': 'color'
+      'route': 'colors'
     },
     {
       'engName': 'Shapes',
@@ -64,16 +64,40 @@ class _HomePageState extends State<HomePage> {
       'route': 'shape'
     },
     {
-      'engName': 'Quiz',
-      'anyName': 'Päärö',
-      'imageLink': 'assets/category_image/quiz.png',
-      'route': 'quiz'
-    },
-    {
       'engName': 'Body part',
       'anyName': 'Jap dëël',
       'imageLink': 'assets/category_image/body_part.png',
       'route': 'body'
+    },
+    {
+      'engName': 'Cloths',
+      'anyName': 'Abïëë',
+      'imageLink': 'assets/word_images/cloth.png',
+      'route': 'cloths'
+    },
+    {
+      'engName': 'Birds',
+      'anyName': 'Winy',
+      'imageLink': 'assets/word_images/birds.png',
+      'route': 'birds'
+    },
+    {
+      'engName': 'Animals',
+      'anyName': 'Lääy',
+      'imageLink': 'assets/word_images/animals.png',
+      'route': 'birds'
+    },
+    {
+      'engName': 'Fishes',
+      'anyName': 'Ric',
+      'imageLink': 'assets/word_images/fish.png',
+      'route': 'birds'
+    },
+    {
+      'engName': 'Quiz',
+      'anyName': 'Päärö',
+      'imageLink': 'assets/category_image/quiz.png',
+      'route': 'quiz'
     }
   ];
   bool themeValue = false;

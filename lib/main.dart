@@ -1,3 +1,5 @@
+import 'package:dha_anywaaa/components/body_part.dart';
+import 'package:dha_anywaaa/components/colors.dart';
 import 'package:dha_anywaaa/components/number.dart';
 import 'package:dha_anywaaa/components/shape.dart';
 import 'package:dha_anywaaa/home_page.dart';
@@ -35,7 +37,9 @@ class MyApp extends StatelessWidget {
         'reading': (context) => Page3(),
         'quiz': (context) => Page4(),
         'home_page': (context) => HomePage(),
-        'name_entry': (context) => NameEntry()
+        'name_entry': (context) => NameEntry(),
+        'colors': (context) => Kit(),
+        'body': (context) => BodyPart()
       },
     );
   }

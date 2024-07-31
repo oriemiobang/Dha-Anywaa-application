@@ -26,6 +26,11 @@ class _ShpaeState extends State<Shpae> {
         'anyName': 'Lømløma',
         'imageLink': 'assets/word_images/circle.png'
       },
+      {
+        'engName': 'Oval',
+        'anyName': 'Abööth abööth',
+        'imageLink': 'assets/word_images/oval.png'
+      },
     ];
     return Scaffold(
       appBar: AppBar(),
@@ -34,11 +39,11 @@ class _ShpaeState extends State<Shpae> {
         child: Column(children: [
           ListTile(
             title: Text(
-              'Kwaano',
+              'Yi cwääc',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
             ),
             subtitle: Text(
-              'Numbers',
+              'Shapes',
               style: TextStyle(fontSize: 20, color: Colors.grey[700]),
             ),
           ),
