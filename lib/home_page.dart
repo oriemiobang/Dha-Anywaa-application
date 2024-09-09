@@ -70,28 +70,28 @@ class _HomePageState extends State<HomePage> {
       'route': 'body'
     },
     {
-      'engName': 'Cloths',
+      'engName': 'Clothes',
       'anyName': 'Abïëë',
       'imageLink': 'assets/word_images/cloth.png',
-      'route': 'cloths'
+      'route': 'clothes'
     },
     {
       'engName': 'Birds',
       'anyName': 'Winy',
       'imageLink': 'assets/word_images/birds.png',
-      'route': 'birds'
+      'route': 'bird'
     },
     {
       'engName': 'Animals',
       'anyName': 'Lääy',
       'imageLink': 'assets/word_images/animals.png',
-      'route': 'birds'
+      'route': 'animal'
     },
     {
       'engName': 'Fishes',
       'anyName': 'Ric',
       'imageLink': 'assets/word_images/fish.png',
-      'route': 'birds'
+      'route': 'fish'
     },
     {
       'engName': 'Quiz',

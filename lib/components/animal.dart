@@ -16,50 +16,60 @@ class _AnimalState extends State<Animal> {
     //   'O määthö ki pïï mo thööth' Akëëlö
     List<Map<String, String>> animals = [
       {
-        'engName': 'Head',
-        'anyName': 'Wïc',
-        'imageLink': "assets/body_part/head.png"
+        'engName': 'Cat',
+        'anyName': 'Adhurrï',
+        'imageLink': "assets/animals/cat.png"
       },
       {
-        'engName': 'Ankle',
-        'anyName': 'Adikwala',
-        'imageLink': "assets/body_part/ankle.png"
+        'engName': 'Chameleons',
+        'anyName': 'Ongøønnø',
+        'imageLink': "assets/animals/chem.png"
       },
       {
-        'engName': 'Arm',
-        'anyName': 'Cinø',
-        'imageLink': 'assets/body_part/arm.png'
+        'engName': 'Dog',
+        'anyName': 'Gwök',
+        'imageLink': 'assets/animals/dog.png'
       },
 
       {
-        'engName': 'Chest',
-        'anyName': 'Käw',
-        'imageLink': 'assets/body_part/chest.png'
+        'engName': 'Donkey',
+        'anyName': 'Arëën',
+        'imageLink': 'assets/animals/donkey.png'
       },
       {
-        'engName': 'Ear',
-        'anyName': 'Ïth',
-        'imageLink': 'assets/body_part/ear.png'
+        'engName': 'Black-and-white colobus',
+        'anyName': 'Döölö',
+        'imageLink': 'assets/animals/doolo.png'
       },
       {
-        'engName': 'Eye',
-        'anyName': 'Wang',
-        'imageLink': 'assets/body_part/eye.png'
+        'engName': 'Fox',
+        'anyName': 'Othöö',
+        'imageLink': 'assets/animals/foox.png'
       },
       {
-        'engName': 'Finger',
-        'anyName': 'Lweedø',
-        'imageLink': 'assets/body_part/finger.png'
+        'engName': 'Giraffe',
+        'anyName': 'Rïï',
+        'imageLink': 'assets/animals/giraffe.png'
       },
       {
-        'engName': 'Foot',
-        'anyName': 'Othäny tielø',
-        'imageLink': 'assets/body_part/foot.png'
+        'engName': 'Goat',
+        'anyName': 'Diel',
+        'imageLink': 'assets/animals/goat.png'
       },
       {
-        'engName': 'Hair',
-        'anyName': 'Jïër',
-        'imageLink': 'assets/body_part/hair.png'
+        'engName': 'Warthog',
+        'anyName': 'Kul',
+        'imageLink': 'assets/animals/kuul.png'
+      },
+      {
+        'engName': 'Rhinoceros',
+        'anyName': 'Nyigudhwönynya',
+        'imageLink': 'assets/animals/ngiguthwonya.png'
+      },
+      {
+        'engName': 'Lion',
+        'anyName': 'Nguu',
+        'imageLink': 'assets/animals/nguu.png'
       },
 
       // 'O ruu ni cämö',
@@ -67,49 +77,19 @@ class _AnimalState extends State<Animal> {
       //   'O ruu ni bäng gïn mo ee camø',
       //   'O määthö ki pïï mo thööth' Akëëlö
       {
-        'engName': 'Knee',
-        'anyName': 'Wïcuung',
-        'imageLink': 'assets/body_part/knee.png'
+        'engName': 'Hippopotamus',
+        'anyName': 'Ray',
+        'imageLink': 'assets/animals/ray.png'
       },
       {
-        'engName': 'Leg',
-        'anyName': 'Tielø',
-        'imageLink': 'assets/body_part/leg.png'
+        'engName': 'Porcupine',
+        'anyName': 'Thëëy',
+        'imageLink': 'assets/animals/theey.png'
       },
       {
-        'engName': 'Mouth',
-        'anyName': 'Dhøk',
-        'imageLink': 'assets/body_part/mouth.png'
-      },
-      {
-        'engName': 'Neck',
-        'anyName': 'Ngut',
-        'imageLink': 'assets/body_part/neck.png'
-      },
-      {
-        'engName': 'Nose',
-        'anyName': 'Um',
-        'imageLink': 'assets/body_part/nose.png'
-      },
-      {
-        'engName': 'Shoulder',
-        'anyName': 'Göön',
-        'imageLink': 'assets/body_part/shoulder.png'
-      },
-      {
-        'engName': 'Theeth',
-        'anyName': 'Lak',
-        'imageLink': 'assets/body_part/theeth.png'
-      },
-      {
-        'engName': 'Thigh',
-        'anyName': 'Ääm',
-        'imageLink': 'assets/body_part/thigh.png'
-      },
-      {
-        'engName': 'Toungue',
-        'anyName': 'Leep',
-        'imageLink': 'assets/body_part/toungue.png'
+        'engName': 'Cow',
+        'anyName': 'Dhieng',
+        'imageLink': 'assets/animals/white_black_cow.png'
       },
     ];
 
@@ -123,11 +103,11 @@ class _AnimalState extends State<Animal> {
         child: Column(children: [
           ListTile(
             title: Text(
-              'Body Parts',
+              'Animals',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
             ),
             subtitle: Text(
-              'Jap Dëël',
+              'Lääy',
               style: TextStyle(fontSize: 20, color: Colors.grey[700]),
             ),
           ),

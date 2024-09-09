@@ -67,7 +67,7 @@ class _KitState extends State<Kit> {
         child: Column(children: [
           ListTile(
             title: Text(
-              'Kit',
+              'Kït',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
             ),
             subtitle: Text(

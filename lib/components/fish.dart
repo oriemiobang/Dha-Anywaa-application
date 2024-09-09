@@ -16,101 +16,41 @@ class _FishState extends State<Fish> {
     //   'O määthö ki pïï mo thööth' Akëëlö
     List<Map<String, String>> fishes = [
       {
-        'engName': 'Head',
-        'anyName': 'Wïc',
-        'imageLink': "assets/body_part/head.png"
+        'engName': '',
+        'anyName': 'Odwëëla',
+        'imageLink': "assets/fish/adweela.png"
       },
       {
-        'engName': 'Ankle',
-        'anyName': 'Adikwala',
-        'imageLink': "assets/body_part/ankle.png"
+        'engName': '',
+        'anyName': 'Agwiila',
+        'imageLink': "assets/fish/agwiila (2).png"
       },
-      {
-        'engName': 'Arm',
-        'anyName': 'Cinø',
-        'imageLink': 'assets/body_part/arm.png'
-      },
+      {'engName': '', 'anyName': 'Dølø', 'imageLink': 'assets/fish/dolo.png'},
 
+      {'engName': '', 'anyName': 'Guur', 'imageLink': 'assets/fish/guur.png'},
       {
-        'engName': 'Chest',
-        'anyName': 'Käw',
-        'imageLink': 'assets/body_part/chest.png'
+        'engName': '',
+        'anyName': 'Jari',
+        'imageLink': 'assets/fish/jari (2).png'
       },
+      {'engName': '', 'anyName': 'Luuth', 'imageLink': 'assets/fish/luuth.png'},
       {
-        'engName': 'Ear',
-        'anyName': 'Ïth',
-        'imageLink': 'assets/body_part/ear.png'
+        'engName': '',
+        'anyName': 'Odwäära',
+        'imageLink': 'assets/fish/odwaara.png'
       },
-      {
-        'engName': 'Eye',
-        'anyName': 'Wang',
-        'imageLink': 'assets/body_part/eye.png'
-      },
-      {
-        'engName': 'Finger',
-        'anyName': 'Lweedø',
-        'imageLink': 'assets/body_part/finger.png'
-      },
-      {
-        'engName': 'Foot',
-        'anyName': 'Othäny tielø',
-        'imageLink': 'assets/body_part/foot.png'
-      },
-      {
-        'engName': 'Hair',
-        'anyName': 'Jïër',
-        'imageLink': 'assets/body_part/hair.png'
-      },
+      {'engName': '', 'anyName': 'Olwak', 'imageLink': 'assets/fish/olwak.png'},
 
       // 'O ruu ni cämö',
       //   'O cämö ki wïth caami mo thööth',
       //   'O ruu ni bäng gïn mo ee camø',
       //   'O määthö ki pïï mo thööth' Akëëlö
       {
-        'engName': 'Knee',
-        'anyName': 'Wïcuung',
-        'imageLink': 'assets/body_part/knee.png'
+        'engName': '',
+        'anyName': 'Orwëëdhö',
+        'imageLink': 'assets/fish/rec.png'
       },
-      {
-        'engName': 'Leg',
-        'anyName': 'Tielø',
-        'imageLink': 'assets/body_part/leg.png'
-      },
-      {
-        'engName': 'Mouth',
-        'anyName': 'Dhøk',
-        'imageLink': 'assets/body_part/mouth.png'
-      },
-      {
-        'engName': 'Neck',
-        'anyName': 'Ngut',
-        'imageLink': 'assets/body_part/neck.png'
-      },
-      {
-        'engName': 'Nose',
-        'anyName': 'Um',
-        'imageLink': 'assets/body_part/nose.png'
-      },
-      {
-        'engName': 'Shoulder',
-        'anyName': 'Göön',
-        'imageLink': 'assets/body_part/shoulder.png'
-      },
-      {
-        'engName': 'Theeth',
-        'anyName': 'Lak',
-        'imageLink': 'assets/body_part/theeth.png'
-      },
-      {
-        'engName': 'Thigh',
-        'anyName': 'Ääm',
-        'imageLink': 'assets/body_part/thigh.png'
-      },
-      {
-        'engName': 'Toungue',
-        'anyName': 'Leep',
-        'imageLink': 'assets/body_part/toungue.png'
-      },
+      {'engName': '', 'anyName': 'Wïïth', 'imageLink': 'assets/fish/wiith.png'},
     ];
 
     // amiriga
@@ -123,11 +63,11 @@ class _FishState extends State<Fish> {
         child: Column(children: [
           ListTile(
             title: Text(
-              'Body Parts',
+              'Fishes',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
             ),
             subtitle: Text(
-              'Jap Dëël',
+              'Ric',
               style: TextStyle(fontSize: 20, color: Colors.grey[700]),
             ),
           ),

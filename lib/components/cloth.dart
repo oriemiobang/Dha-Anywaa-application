@@ -1,87 +1,69 @@
 import 'package:flutter/material.dart';
 
-class Bird extends StatefulWidget {
-  const Bird({super.key});
+class Cloth extends StatefulWidget {
+  const Cloth({super.key});
 
   @override
-  State<Bird> createState() => _BirdState();
+  State<Cloth> createState() => _ClothState();
 }
 
-class _BirdState extends State<Bird> {
+class _ClothState extends State<Cloth> {
   @override
   Widget build(BuildContext context) {
     // 'O ruu ni cämö',
     //   'O cämö ki wïth caami mo thööth',
     //   'O ruu ni bäng gïn mo ee camø',
     //   'O määthö ki pïï mo thööth' Akëëlö
-    List<Map<String, String>> birds = [
+    List<Map<String, String>> clothes = [
       {
-        'engName': 'Hamerkop',
-        'anyName': 'Aciik',
-        'imageLink': "assets/birds/aciik.png"
+        'engName': 'Belt',
+        'anyName': 'Kaw',
+        'imageLink': "assets/cloth/belt.png"
       },
       {
-        'engName': 'Village weaver',
-        'anyName': 'Aleerø',
-        'imageLink': "assets/birds/aleero.png"
+        'engName': 'Cap',
+        'anyName': 'Cöör',
+        'imageLink': "assets/cloth/cap.png"
       },
       {
-        'engName': 'Butterfly',
-        'anyName': 'Adeellakwac',
-        'imageLink': 'assets/birds/butterfly.png'
-      },
-
-      {
-        'engName': 'Duck',
-        'anyName': 'Badhø',
-        'imageLink': 'assets/birds/duck.png'
-      },
-
-      // 'O ruu ni cämö',
-      //   'O cämö ki wïth caami mo thööth',
-      //   'O ruu ni bäng gïn mo ee camø',
-      //   'O määthö ki pïï mo thööth' Akëëlö
-
-      {
-        'engName': 'Fish eagle',
-        'anyName': 'Dibëël',
-        'imageLink': 'assets/birds/fish_eagle.png'
+        'engName': 'Dress',
+        'anyName': 'Araagi',
+        'imageLink': 'assets/cloth/dress.png'
       },
       {
-        'engName': 'Hen',
-        'anyName': 'Gwienø',
-        'imageLink': 'assets/birds/gwieno.png'
+        'engName': 'Lïdhäärë',
+        'anyName': 'Eye glasses',
+        'imageLink': 'assets/cloth/glasses.png'
       },
       {
-        'engName': 'Cattle Egret',
-        'anyName': 'Okøøk',
-        'imageLink': 'assets/birds/okook.png'
+        'engName': 'Jacket',
+        'anyName': 'Koothi',
+        'imageLink': 'assets/cloth/jacket.png'
       },
       {
-        'engName': 'Plegadis',
-        'anyName': 'Owaaw',
-        'imageLink': 'assets/birds/owaaw.png'
+        'engName': 'War',
+        'anyName': 'Shoes',
+        'imageLink': 'assets/cloth/shoess.png'
       },
       {
-        'engName': 'Pelican',
-        'anyName': 'Obööngö',
-        'imageLink': 'assets/birds/pelican.png'
+        'engName': 'Shorts',
+        'anyName': 'Ongølø',
+        'imageLink': 'assets/cloth/shorts.png'
       },
       {
-        'engName': 'Standard nightjar',
-        'anyName': 'Obwölatäämmö',
-        'imageLink': 'assets/birds/standard_nightjar.png'
-        //määthö
+        'engName': 'Skirt',
+        'anyName': 'Thïnuura',
+        'imageLink': 'assets/cloth/skirt.png'
       },
       {
-        'engName': 'Owl',
-        'anyName': 'Tula',
-        'imageLink': 'assets/birds/tula.png'
+        'engName': 'Socks',
+        'anyName': 'Curubathe',
+        'imageLink': 'assets/cloth/socks.png'
       },
       {
-        'engName': 'Dove',
-        'anyName': 'Akuuru',
-        'imageLink': 'assets/birds/white_dove.png'
+        'engName': 'Trouser',
+        'anyName': 'Marthøa',
+        'imageLink': 'assets/cloth/trouser.png'
       },
     ];
 
@@ -95,11 +77,11 @@ class _BirdState extends State<Bird> {
         child: Column(children: [
           ListTile(
             title: Text(
-              'Birds',
+              'Clothes',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
             ),
             subtitle: Text(
-              'Winy',
+              'Abïëë',
               style: TextStyle(fontSize: 20, color: Colors.grey[700]),
             ),
           ),
@@ -110,12 +92,12 @@ class _BirdState extends State<Bird> {
               child: GridView.count(
             crossAxisCount: 2,
             children: List.generate(
-                birds.length,
+                clothes.length,
                 (index) => Card(
                       child: GestureDetector(
                         // onTap: () {
                         //   Navigator.pushNamed(
-                        //       context, '${birds[index]['route']}');
+                        //       context, '${clothes[index]['route']}');
                         // },
                         child: Column(
                           children: [
@@ -124,15 +106,15 @@ class _BirdState extends State<Bird> {
                             ),
                             Expanded(
                               child:
-                                  Image.asset('${birds[index]['imageLink']}'),
+                                  Image.asset('${clothes[index]['imageLink']}'),
                             ),
                             ListTile(
                               subtitle: Text(
-                                '${birds[index]['engName']}',
+                                '${clothes[index]['engName']}',
                                 style: TextStyle(color: Colors.grey),
                               ),
                               title: Text(
-                                '${birds[index]['anyName']}',
+                                '${clothes[index]['anyName']}',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 16,

@@ -1,6 +1,7 @@
 import 'package:dha_anywaaa/components/animal.dart';
 import 'package:dha_anywaaa/components/bird.dart';
 import 'package:dha_anywaaa/components/body_part.dart';
+import 'package:dha_anywaaa/components/cloth.dart';
 import 'package:dha_anywaaa/components/colors.dart';
 import 'package:dha_anywaaa/components/fish.dart';
 import 'package:dha_anywaaa/components/number.dart';
@@ -45,7 +46,8 @@ class MyApp extends StatelessWidget {
         'body': (context) => BodyPart(),
         'fish': (context) => Fish(),
         'animal': (context) => Animal(),
-        'bird': (context) => Bird()
+        'bird': (context) => Bird(),
+        'clothes': (context) => Cloth()
       },
     );
   }
