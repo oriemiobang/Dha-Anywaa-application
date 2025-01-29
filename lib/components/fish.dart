@@ -57,11 +57,11 @@ class _FishState extends State<Fish> {
                 ListTile(
                   //Cöörä
                   title: Text(
-                    'winy',
+                    'Ric',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
                   ),
                   subtitle: Text(
-                    'Birds',
+                    'Fishes',
                     style: TextStyle(fontSize: 20, color: Colors.grey[700]),
                   ),
                   trailing: IconButton(
