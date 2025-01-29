@@ -99,7 +99,7 @@ class _NumberState extends State<Number> {
                   child: Text(
                     numbers[index]['number']!,
                     style: TextStyle(
-                      fontSize: 150,
+                      fontSize: 400,
                       fontWeight: FontWeight.bold,
                       color: Colors.grey[700],
                     ),

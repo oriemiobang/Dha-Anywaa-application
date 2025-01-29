@@ -115,13 +115,13 @@ class _Page1State extends State<Page1> {
                         Text(
                           letterAndSound[index].capitalLetter,
                           style: TextStyle(
-                            fontSize: 150,
+                            fontSize: 290,
                             fontWeight: FontWeight.bold,
                             color: Colors.grey[700],
                           ),
                         ),
                         SizedBox(
-                          width: 40,
+                          width: 20,
                         ),
                         Text(
                           letterAndSound[index].smallLetter,
