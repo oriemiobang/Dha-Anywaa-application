@@ -255,16 +255,16 @@ class _Page4State extends State<Page4> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      '($finalResult / ${questionsList.length}) Jier løk pïëc mana näk kare.',
-                      style: TextStyle(
-                          color: Color.fromARGB(255, 3, 44, 77),
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20),
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.all(8.0),
+                  //   child: Text(
+                  //     '($finalResult / ${questionsList.length}) Jier løk pïëc mana näk kare.',
+                  //     style: TextStyle(
+                  //         color: Color.fromARGB(255, 3, 44, 77),
+                  //         fontWeight: FontWeight.bold,
+                  //         fontSize: 20),
+                  //   ),
+                  // ),
                   Column(
                     children: [
                       Card(
