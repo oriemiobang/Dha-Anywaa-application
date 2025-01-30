@@ -115,7 +115,7 @@ class _Page1State extends State<Page1> {
                         Text(
                           letterAndSound[index].capitalLetter,
                           style: TextStyle(
-                            fontSize: 290,
+                            fontSize: 220,
                             fontWeight: FontWeight.bold,
                             color: Colors.grey[700],
                           ),
@@ -126,7 +126,7 @@ class _Page1State extends State<Page1> {
                         Text(
                           letterAndSound[index].smallLetter,
                           style: TextStyle(
-                            fontSize: 80,
+                            fontSize: 50,
                             fontWeight: FontWeight.bold,
                             color: Colors.grey[700],
                           ),
