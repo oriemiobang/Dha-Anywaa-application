@@ -1,7 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:audioplayers/audioplayers.dart';
-import 'package:dha_anywaaa/sentence.dart';
+import 'package:dha_anywaaa/Sentence.dart';
+// import 'package:dha_anywaaa/sentence.dart';
 import 'package:flutter/material.dart';
 
 class Page3 extends StatefulWidget {

@@ -56,11 +56,12 @@ class _KitState extends State<Kit> {
   ];
   bool zoom = false;
   int index = 0;
+      final data = MediaQueryData.fromView(WidgetsBinding.instance.window);
   @override
   Widget build(BuildContext context) {
     // amiriga
     return Scaffold(
-      appBar: AppBar(
+    appBar: data.size.shortestSide > 600? null : AppBar(
         forceMaterialTransparency: true,
       ),
       body: zoom

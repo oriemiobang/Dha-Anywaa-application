@@ -76,6 +76,7 @@ class _Page1State extends State<Page1> {
 
   bool zoom = false;
   int index = 0;
+      final data = MediaQueryData.fromView(WidgetsBinding.instance.window);
 
   @override
   Widget build(BuildContext context) {
@@ -217,7 +218,7 @@ class _Page1State extends State<Page1> {
                   ),
                   Expanded(
                     child: GridView.count(
-                      crossAxisCount: 2,
+                      crossAxisCount: data.size.shortestSide > 600? 3:  2,
                       children: List.generate(letterAndSound.length, (index) {
                         return Padding(
                           padding: const EdgeInsets.all(1),

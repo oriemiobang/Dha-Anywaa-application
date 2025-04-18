@@ -1,7 +1,19 @@
 // ignore_for_file: prefer_const_construct
 import 'package:dha_anywaaa/about.dart';
+import 'package:dha_anywaaa/components/animal.dart';
+import 'package:dha_anywaaa/components/bird.dart';
+import 'package:dha_anywaaa/components/body_part.dart';
+import 'package:dha_anywaaa/components/cloth.dart';
+import 'package:dha_anywaaa/components/colors.dart';
+import 'package:dha_anywaaa/components/fish.dart';
+import 'package:dha_anywaaa/components/number.dart';
 import 'package:dha_anywaaa/components/savedData.dart';
+import 'package:dha_anywaaa/components/shape.dart';
 import 'package:dha_anywaaa/help.dart';
+import 'package:dha_anywaaa/pages/page1.dart';
+import 'package:dha_anywaaa/pages/page2.dart';
+import 'package:dha_anywaaa/pages/page3.dart';
+import 'package:dha_anywaaa/pages/page4.dart';
 // import 'package:dha_anywaaa/pages/page1.dart';
 // import 'package:dha_anywaaa/pages/page2.dart';
 // import 'package:dha_anywaaa/pages/page3.dart';
@@ -100,8 +112,12 @@ class _HomePageState extends State<HomePage> {
       'route': 'quiz'
     }
   ];
+
+  List pageList = [Number(), Page1(), Page2(), Page3(), Kit(), Shpae(), BodyPart(), Cloth(), Bird(), Animal(), Fish(), Page4()];
   bool themeValue = false;
+  final data = MediaQueryData.fromView(WidgetsBinding.instance.window);
   String name = '';
+  int _currentIndex = 0;
   @override
   void initState() {
     _refresh();
@@ -269,7 +285,102 @@ class _HomePageState extends State<HomePage> {
         //   Page3(),
         //   Page4(),
         // ]),
-        body: Padding(
+        body: LayoutBuilder(builder: (context ,constraints){
+    if (constraints.maxWidth > 600) {
+      // Tablet layout
+      return Column(
+        children: [
+          data.size.shortestSide> 600? Padding(
+            padding: const EdgeInsets.only(left: 20, bottom: 10),
+            child: Row(children: [Text(
+                  'Hello, ',
+                  style: TextStyle(fontSize: 25),
+                ),
+                Text(
+                  '$name',
+                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                ), ],),
+          ) :
+          ListTile(
+            title: Text(
+                'Hello,',
+                style: TextStyle(fontSize: 20),
+              ),
+              subtitle:Text(
+                '$name',
+                style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+              ), 
+          )
+              ,
+              
+              SizedBox(height: 10),
+          Expanded(
+            child: Row(
+              children: [
+                
+                Expanded(
+                  flex: 3,
+                  child: Container(
+                    child: ListView.builder(
+                      itemCount: categories.length,
+                      itemBuilder: (context, index){
+                      return GestureDetector(
+                        onTap: (){
+                          setState(() {
+                            _currentIndex = index;
+                          });
+                        },
+                        child: Container(
+                          decoration:  BoxDecoration(
+                            border: Border(
+                              left: _currentIndex != index?  BorderSide(): BorderSide(
+                                color: Colors.blue,
+                                width: 5
+                              )
+                            )
+                          ),
+                          padding: const EdgeInsets.only(bottom: 10.0),
+                          child: ListTile(
+                            leading: SizedBox(
+                              width: 100,
+                              child: Image.asset( '${categories[index]['imageLink']}')),
+                            subtitle: Text('${categories[index]['engName']}',
+                                          style: TextStyle(color: Colors.grey, fontSize: 18),),
+                            title: Text('${categories[index]['anyName']}',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.grey[700],
+                                            fontSize: 20,
+                                          ),),
+                          ),
+                        ),
+                      );
+                    }),
+                    // color: Colors.amber,
+                    height: MediaQuery.of(context).size.height,
+                  
+                  ),
+                ),
+                  Expanded(
+                    flex: 7,
+                    child: Container(
+                      child: pageList[_currentIndex],
+                    color: Colors.grey,
+                    height: MediaQuery.of(context).size.height,
+                              
+                              ),
+                  )
+              ],
+            ),
+          ),
+        ],
+      );
+    } else {
+      // Phone layout
+      return 
+  
+        
+        Padding(
           padding:
               const EdgeInsets.only(top: 10, left: 20, right: 20, bottom: 15),
           child: Column(
@@ -323,7 +434,8 @@ class _HomePageState extends State<HomePage> {
               ))
             ],
           ),
-        ),
+          );  }
+  },) 
       ),
     );
   }

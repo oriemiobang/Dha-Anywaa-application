@@ -191,6 +191,7 @@ class _Page2State extends State<Page2> {
   ];
   bool zoom = false;
   int index = 0;
+      final data = MediaQueryData.fromView(WidgetsBinding.instance.window);
 
   @override
   Widget build(BuildContext context) {
@@ -322,7 +323,7 @@ class _Page2State extends State<Page2> {
                 ),
                 Expanded(
                   child: GridView.count(
-                    crossAxisCount: 2,
+                    crossAxisCount: data.size.shortestSide> 600 ? 3: 2,
                     children: List.generate(wordsAndPictures.length, (index) {
                       return Card(
                         color: Colors.grey[98],

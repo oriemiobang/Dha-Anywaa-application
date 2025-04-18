@@ -6,8 +6,12 @@ buildscript {
     }
 
     dependencies {
-        classpath "com.android.tools.build:gradle:7.0.2"
+        // classpath "com.android.tools.build:gradle:7.0.2"
+        //  classpath 'com.android.tools.build:gradle:7.3.0' // For Gradle 7.x
+         classpath 'com.android.tools.build:gradle:8.2.2' 
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+            classpath 'com.android.tools.build:gradle:8.2.2'  // Latest stable as of April 2025
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.22" // If using Kotlin
     }
 }
 
