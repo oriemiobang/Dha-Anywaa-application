@@ -54,6 +54,8 @@ if (flutterVersionName == null) {
     }
 
     defaultConfig {
+         minSdkVersion 21 // or higher
+    targetSdkVersion 33 // or higher
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.bellaTech.dha_anywaaa"
         // You can update the following values to match your application needs.
